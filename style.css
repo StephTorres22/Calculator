@@ -24,25 +24,72 @@
     margin: 30px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;   
+    justify-content: center;   
 }
 
 .numberButtons{
-    width: 270px;
+    width: auto;
     height: 606px;
     max-height: 606px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-gap: 15px;
+    place-items: space-evenly;
 
 }
+
+.plusButton{
+    grid-column: 5/6;
+    grid-row: 1/2;
+}
+.minusButton{
+    grid-column: 5/6;
+    grid-row: 2/3;
+}
+.timesButton{
+    grid-column: 5/6;
+    grid-row: 3/4;
+}
+.divideButton{
+    grid-column: 5/6;
+    grid-row: 4/5;
+}
+.button4{
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+.button5{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+.button6{
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+.button1{
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+.button2{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+.button3{
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+
+
 .button0{
     grid-column: 2/3;
     grid-row: 4/5;
 }
 button{
     border-radius: 15px;
+    font-size: x-large;
+    width: 80px;
+    height: 140px;
     
 
 }
