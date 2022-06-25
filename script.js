@@ -15,7 +15,13 @@
     
     -func for display and get variables a and b
     
-    if number buttons are serparate to operator buttons, can select all of them at onece, rather than indiviual listeners?*/
+    if number buttons are serparate to operator buttons, can select all of them at onece, rather than indiviual listeners?
+    
+    -use =button with an if statments to determine which function to use, eg, if + is present in string on screen, add()
+    
+    -need to add a clear/reset button*/
+
+    
 
 
     const plusButton = document.getElementById('plusButton');
@@ -23,6 +29,7 @@
     const timesButton = document.getElementById('timesButton');
     const divideButton = document.getElementById('divideButton');
     const numberButtonContainer = document.querySelector('.numberButtons');
+    const display = document.querySelector('.screen');
     let numA;
     let numB;
 
@@ -33,7 +40,7 @@
         numberButton.classList.add('button');
         numberButtonContainer.appendChild(numberButton);
         numberButton.addEventListener('click', function(){
-            console.log(this.innerText);
+            display.innerText += this.innerText;
         })
     }
 
