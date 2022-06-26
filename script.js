@@ -124,7 +124,14 @@
         } else if(number.includes('-')){
             fisrtNumber = number.slice(0,(number.indexOf('-')));
             secondNumber = number.slice((number.indexOf('-')+1));
+        } else if (number.includes('\u00d7')){
+            fisrtNumber = number.slice(0, (number.indexOf('\u00d7')));
+            secondNumber = number.slice((number.indexOf('\u00d7')+1));
+        } else if (number.includes('\u00f7')){
+            fisrtNumber = number.slice(0,(number.indexOf('\u00f7')));
+            secondNumber = number.slice((number.indexOf('\u00f7')+1));
         }
+
         numA = parseInt(fisrtNumber);
         numB = parseInt(secondNumber);
         return numA, numB;
@@ -135,6 +142,10 @@
             add();
         }else if(number.includes('-')){
             subtract();
+        }else if (number.includes('\u00d7')){
+            muliply();
+        }else if (number.includes('\u00f7')){
+            divide();
         }
     }
 
