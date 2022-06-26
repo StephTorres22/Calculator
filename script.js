@@ -19,7 +19,11 @@
     
     -use =button with an if statments to determine which function to use, eg, if + is present in string on screen, add()
     
-    -need to add a clear/reset button*/
+    -need to add a clear/reset button and delete/backspace
+    
+    split string, before and after operator to give two different numbers*/
+
+    
 
     
 
@@ -43,9 +47,21 @@
             display.innerText += this.innerText;
         })
     }
-
+    plusButton.addEventListener('click', function(){
+        display.innerText += this.innerText;
+    })
+    minusButton.addEventListener('click', function(){
+        display.innerText += this.innerText;
+    })
+    timesButton.addEventListener('click', function(){
+        display.innerText += this.innerText;
+    })
+    divideButton.addEventListener('click', function(){
+        display.innerText += this.innerText;
+    })
     
     function displayInput(){
+        
 
 
 

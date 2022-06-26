@@ -14,6 +14,13 @@
     margin: 30px;
     margin-top: 50px;
     height: 90px;
+    font-family: 'Orbitron';
+    font-size: xxx-large;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 15px;
+    overflow: hidden;
 }
 
 .buttonContainer{
@@ -41,15 +48,6 @@
 .operatorButtons{
     display: grid;
     gap: 15px;
-}
-
-.screen{
-    font-family: 'Orbitron';
-    font-size: xxx-large;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding-right: 15px;
 }
 
 #decimalButton{
