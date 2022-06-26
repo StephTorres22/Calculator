@@ -52,48 +52,49 @@
         numberButton.innerText = (i);
         numberButton.classList.add('button');
         numberButtonContainer.appendChild(numberButton);
-        numberButton.addEventListener('click', function(){
-            display.innerText += this.innerText;
-            number = display.innerText;
-            console.log(number);
-        })
+        numberButton.addEventListener('click', addToDisplayText);
+            
+        
     }
-    plusButton.addEventListener('click', addOperatorToDisplayText);
-    plusButton.addEventListener('click', disableButtons);        
+    const numberButtons = Array.from(numberButtonContainer.childNodes);
+    plusButton.addEventListener('click', addToDisplayText);
+    plusButton.addEventListener('click', disableOperatorButtons);        
     
-    minusButton.addEventListener('click', addOperatorToDisplayText);
-    minusButton.addEventListener('click', disableButtons);
+    minusButton.addEventListener('click', addToDisplayText);
+    minusButton.addEventListener('click', disableOperatorButtons);
     
-    timesButton.addEventListener('click', addOperatorToDisplayText);
-    timesButton.addEventListener('click', disableButtons);
+    timesButton.addEventListener('click', addToDisplayText);
+    timesButton.addEventListener('click', disableOperatorButtons);
 
-    divideButton.addEventListener('click', addOperatorToDisplayText);
-    divideButton.addEventListener('click', disableButtons);
+    divideButton.addEventListener('click', addToDisplayText);
+    divideButton.addEventListener('click', disableOperatorButtons);
 
     equalsButton.addEventListener('click', splitString);
     equalsButton.addEventListener('click', whichOperator);
+    equalsButton.addEventListener('click', disableNumberButtons);
 
-    decimalButton.addEventListener('click', function(){
-        display.innerText += this.innerText;//this will need some work so you can only use once decimal either side of operator.
-    })
+   // decimalButton.addEventListener('click', function(){
+     //   display.innerText += this.innerText;//this will need some work so you can only use once decimal either side of operator.
+   // })
     
-    function addOperatorToDisplayText(){
+    function addToDisplayText(){
+        
         display.innerText += this.innerText
+        number = display.innerText;
     }
 
-    function disableButtons(){
-      plusButton.removeEventListener('click', addOperatorToDisplayText);
+    function disableOperatorButtons(){
+      plusButton.removeEventListener('click', addToDisplayText);
       plusButton.classList.add('disabled');
-      minusButton.removeEventListener('click', addOperatorToDisplayText);
+      minusButton.removeEventListener('click', addToDisplayText);
       minusButton.classList.add('disabled');
-      timesButton.removeEventListener('click', addOperatorToDisplayText);
+      timesButton.removeEventListener('click', addToDisplayText);
       timesButton.classList.add('disabled');
-      divideButton.removeEventListener('click', addOperatorToDisplayText);
+      divideButton.removeEventListener('click', addToDisplayText);
       divideButton.classList.add('disabled');
     }
 
     function add(){
-
         result = numA + numB
         display.innerText = result
         
@@ -147,6 +148,12 @@
         }else if (number.includes('\u00f7')){
             divide();
         }
+    }
+
+    function disableNumberButtons(){
+        numberButtons.forEach(numberButton => numberButton.removeEventListener('click', addToDisplayText));
+        numberButtonContainer.classList.add('disabled');
+        
     }
 
 
