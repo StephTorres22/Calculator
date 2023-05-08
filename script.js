@@ -1,4 +1,4 @@
-//Calculator project
+/* //Calculator project
 
 /*  -Populate screen with number buttons and operator buttons, each have a different container
      use grid for this, and/or a similar function to etch-a-sketch
@@ -25,142 +25,144 @@
         -number.slice(0, indexOf(+)) would give a string upto the plus sign
         -number.slice((indexOf(+)+1) should give the remaining string
     
-    -once one operator is clicked, other operators disabled*/
+    -once one operator is clicked, other operators disabled
+*/
 
-    
+const display = document.querySelector(".screen");
 
-    
+const plusButton = document.getElementById("plusButton");
+const minusButton = document.getElementById("minusButton");
+const timesButton = document.getElementById("timesButton");
+const divideButton = document.getElementById("divideButton");
+const decimalButton = document.getElementById("decimalButton");
+const equalsButton = document.getElementById("equalsButton");
+const numberButtonContainer = document.querySelector(".numberButtons");
+const resetButton = document.getElementById("resetButton");
+const operatorButtonsContainer = document.querySelector(".operatorButtons");
+const plusMinusButton = document.getElementById("plusMinus");
 
+const operatorButtons = Array.from(operatorButtonsContainer.childNodes);
+const numberButtons = Array.from(numberButtonContainer.childNodes);
 
-    const plusButton = document.getElementById('plusButton');
-    const minusButton = document.getElementById('minusButton');
-    const timesButton = document.getElementById('timesButton');
-    const divideButton = document.getElementById('divideButton');
-    const decimalButton = document.getElementById('decimalButton');
-    const equalsButton = document.getElementById('equalsButton');
-    const numberButtonContainer = document.querySelector('.numberButtons');
+resetButton.addEventListener("click", () => {
+  operation = [];
+  enableOperaters();
+  decimalButton.removeAttribute("disabled");
+  equalsButton.setAttribute("disabled", "true");
+  display.textContent = "";
+  console.log(operation);
+});
 
+//toggle between neg and pos num
+plusMinusButton.addEventListener("click", () => {
+  if (display.textContent !== "") {
+    display.textContent = parseFloat(display.innerText) * -1;
+  }
+});
 
-    const display = document.querySelector('.screen');
-    let numA;
-    let numB;
-    let result;
-    let number;
-    let numberButton;
-    for (i=9; i>=0; i--){
-        numberButton = document.createElement('button');
-        numberButton.innerText = (i);
-        numberButton.classList.add('button');
-        numberButtonContainer.appendChild(numberButton);
-        numberButton.addEventListener('click', addToDisplayText);
-            
-        
-    }
-    const numberButtons = Array.from(numberButtonContainer.childNodes);
-    plusButton.addEventListener('click', addToDisplayText);
-    plusButton.addEventListener('click', disableOperatorButtons);        
-    
-    minusButton.addEventListener('click', addToDisplayText);
-    minusButton.addEventListener('click', disableOperatorButtons);
-    
-    timesButton.addEventListener('click', addToDisplayText);
-    timesButton.addEventListener('click', disableOperatorButtons);
+//allow decimal numbers
+decimalButton.addEventListener("click", () => {
+  display.textContent += decimalButton.innerText;
+  decimalButton.setAttribute("disabled", "true");
+});
 
-    divideButton.addEventListener('click', addToDisplayText);
-    divideButton.addEventListener('click', disableOperatorButtons);
+equalsButton.addEventListener("click", () => {
+  operation.push(display.innerText);
+  if (operation[1] == "\u00f7" && operation[2] == "0") {
+    alert("Don't be a nob");
+    operation = [];
+    display.textContent = "";
+  }
+  console.log(operation);
+  equalsButton.setAttribute("disabled", "true");
+  enableOperaters();
+  let result = calculate();
+  // decimalButton.removeAttribute("disabled");
+  operation = [];
+  display.textContent = result;
+});
 
-    equalsButton.addEventListener('click', splitString);
-    equalsButton.addEventListener('click', whichOperator);
-    equalsButton.addEventListener('click', disableNumberButtons);
+let operation = [];
 
-   // decimalButton.addEventListener('click', function(){
-     //   display.innerText += this.innerText;//this will need some work so you can only use once decimal either side of operator.
-   // })
-    
-    function addToDisplayText(){
-        
-        display.innerText += this.innerText
-        number = display.innerText;
-    }
+function enableOperaters() {
+  plusButton.removeAttribute("disabled");
+  minusButton.removeAttribute("disabled");
+  timesButton.removeAttribute("disabled");
+  divideButton.removeAttribute("disabled");
+}
 
-    function disableOperatorButtons(){
-      plusButton.removeEventListener('click', addToDisplayText);
-      plusButton.classList.add('disabled');
-      minusButton.removeEventListener('click', addToDisplayText);
-      minusButton.classList.add('disabled');
-      timesButton.removeEventListener('click', addToDisplayText);
-      timesButton.classList.add('disabled');
-      divideButton.removeEventListener('click', addToDisplayText);
-      divideButton.classList.add('disabled');
-    }
+function disableOperaters() {
+  plusButton.setAttribute("disabled", "true");
+  minusButton.setAttribute("disabled", "true");
+  timesButton.setAttribute("disabled", "true");
+  divideButton.setAttribute("disabled", "true");
+}
 
-    function add(){
-        result = numA + numB
-        display.innerText = result
-        
-    }
+operatorButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    operation.push(display.innerText);
+    operation.push(button.innerText);
+    display.innerText = "";
 
-    function subtract(){
-        result = numA - numB;
-        display.innerText = result;
-    }
+    disableOperaters();
+    decimalButton.removeAttribute("disabled");
+    equalsButton.removeAttribute("disabled");
 
-    function divide(){
-        result = numA/numB
-        display.innerText = result;
+    console.log(operation);
+  });
+});
 
-    }
+//updates calc display
+function addToDisplayText() {
+  display.innerText += this.innerText;
+}
 
-    function muliply(){
-        result = numA * numB;
-        display.innerText = result;
-    }
+//creates number buttons
+for (i = 9; i >= 0; i--) {
+  let numberButton = document.createElement("button");
+  numberButton.innerText = i;
+  numberButton.classList.add("button");
+  numberButtonContainer.appendChild(numberButton);
+  numberButton.addEventListener("click", addToDisplayText);
+}
 
-    function splitString(){
-        let fisrtNumber;
-        let secondNumber;
-        if(number.includes('+')){
-            fisrtNumber = number.slice(0, (number.indexOf('+')));
-            secondNumber = number.slice((number.indexOf('+')+1));
-        } else if(number.includes('-')){
-            fisrtNumber = number.slice(0,(number.indexOf('-')));
-            secondNumber = number.slice((number.indexOf('-')+1));
-        } else if (number.includes('\u00d7')){
-            fisrtNumber = number.slice(0, (number.indexOf('\u00d7')));
-            secondNumber = number.slice((number.indexOf('\u00d7')+1));
-        } else if (number.includes('\u00f7')){
-            fisrtNumber = number.slice(0,(number.indexOf('\u00f7')));
-            secondNumber = number.slice((number.indexOf('\u00f7')+1));
-        }
+//operations
+function add(a, b) {
+  return a + b;
+}
 
-        numA = parseInt(fisrtNumber);
-        numB = parseInt(secondNumber);
-        return numA, numB;
-    }
+function subtract(a, b) {
+  return a - b;
+}
 
-    function whichOperator(){
-        if(number.includes('+')){
-            add();
-        }else if(number.includes('-')){
-            subtract();
-        }else if (number.includes('\u00d7')){
-            muliply();
-        }else if (number.includes('\u00f7')){
-            divide();
-        }
-    }
+function divide(a, b) {
+  return a / b;
+}
 
-    function disableNumberButtons(){
-        numberButtons.forEach(numberButton => numberButton.removeEventListener('click', addToDisplayText));
-        numberButtonContainer.classList.add('disabled');
-        
-    }
+function muliply(a, b) {
+  return a * b;
+}
 
+function calculate() {
+  let a = parseFloat(operation[0]);
+  let b = parseFloat(operation[2]);
 
-        
+  let result;
+  if (operation[1] === "+") {
+    result = add(a, b);
+  }
 
+  if (operation[1] === "-") {
+    result = subtract(a, b);
+  }
 
+  if (operation[1] === "\u00d7") {
+    result = muliply(a, b);
+  }
 
-    
-
-    
+  if (operation[1] === "\u00f7") {
+    result = divide(a, b);
+  }
+  //round to 2.d.p
+  return result.toFixed(2);
+}

@@ -1,74 +1,76 @@
-.calculatorBody{
-    height: 900px;
-    width: 600px;
-    border-radius: 30px;
-    border-color: black;
-    border-style: solid;
-    
+.calculatorBody {
+  height: 900px;
+  width: 600px;
+  border-radius: 30px;
+  border-color: black;
+  border-style: solid;
 }
 
-.screen{
-    border-radius: 15px;
-    border-color: black;
-    border-style: solid;
-    margin: 30px;
-    margin-top: 50px;
-    height: 90px;
-    font-family: 'Orbitron';
-    font-size: xxx-large;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding-right: 15px;
-    overflow: hidden;
+.screen {
+  border-radius: 15px;
+  border-color: black;
+  border-style: solid;
+  margin: 30px;
+  margin-top: 50px;
+  height: 90px;
+  font-family: "Orbitron";
+  font-size: xxx-large;
+
+  text-align: right;
+  line-height: 90px;
+  padding-right: 15px;
+  overflow: auto;
 }
 
-.buttonContainer{
-    padding: 15px;
-    border-style: solid;
-    border-color: black;
-    height: 600px;
-    margin: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;   
+.buttonContainer {
+  padding: 15px;
+  border-style: solid;
+  border-color: black;
+  height: 600px;
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.numberButtons{
-    width: auto;
-    height: 606px;
-    max-height: 606px;
-    display: grid;
-    grid-auto-flow: dense;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 15px;
-    
-}
-.operatorButtons{
-    display: grid;
-    gap: 15px;
+.numberButtons {
+  width: auto;
+  height: 606px;
+  max-height: 606px;
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 15px;
 }
 
-#decimalButton{
-    grid-column: 2/3;
-    grid-row: 4/5;
-    
+.clearButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
-#equalsButton{
-    grid-column: 3/4;
-    grid-row: 4/5;
-    background-color: deepskyblue;
-}
-button{
-    border-radius: 15px;
-    font-size: x-large;
-    width: 80px;
-    height: 140px;
-    
 
+.operatorButtons {
+  display: grid;
+  gap: 15px;
 }
-.disabled{
-    opacity: 0.6;
-    cursor: not-allowed;
+
+#decimalButton {
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+#equalsButton {
+  grid-column: 3/4;
+  grid-row: 4/5;
+  background-color: deepskyblue;
+}
+button {
+  border-radius: 15px;
+  font-size: x-large;
+  width: 80px;
+  height: 80px;
+}
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

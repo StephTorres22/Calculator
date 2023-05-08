@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head lang="en">
-        <title>Calculator</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="./style.css">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-            </style>
-        <script src="./script.js" defer></script>
-    </head>
-    <body>
-        <h1>Calculator</h1>
-        <div class="calculatorBody">
-            <div class="screen"></div>
-            <div class="buttonContainer">
-                <div class="numberButtons">
-                    <button id="decimalButton">.</button>
-                    <button id="equalsButton">=</button>
-                    
-                </div>
-                <div class="operatorButtons">
-
-                    
-                    
-               
-                    <button id="plusButton">+</button>
-                    <button id="minusButton">-</button>
-                    <button id="timesButton">&times;</button>
-                    <button id="divideButton">&divide;</button>
-
-                </div>
-            </div>
+  <head lang="en">
+    <title>Calculator</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+    </style>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <div class="calculatorBody">
+      <div class="screen"></div>
+      <div class="buttonContainer">
+        <div class="numberButtons">
+          <button id="decimalButton">.</button>
+          <button id="equalsButton" disabled="true">=</button>
         </div>
-    </body>
-   
+        <div class="clearButtons">
+          <button id="resetButton">AC</button>
+          <button id="plusMinus">+/-</button>
+        </div>
+        <div class="operatorButtons">
+          <button id="plusButton">+</button>
+          <button id="minusButton">-</button>
+          <button id="timesButton">&times;</button>
+          <button id="divideButton">&divide;</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
